@@ -15,3 +15,5 @@ request.on('error', function(error) {
 });
 
 request.end();
+
+//https://botcube.co/blog/2017/02/23/tutorial-create-smart-facebook-messenger-chatbot-with-node-js-and-api-ai-nlp.html
