@@ -14,7 +14,9 @@ cheerio = require('cheerio'),
     xmlMode: true
 });
 
-/*_______________________canvip_Ai______start_________________*/
+
+
+/*_______________________canvip_Ai______start_________________
 const crypto = require('crypto'),
 //const express = require('express');
  fetch = require('node-fetch');
@@ -64,9 +66,11 @@ const fbMessage = (id, text) => {
 
 
 
-/*_______________________canvip_Ai_______end________________*/
+_______________________canvip_Ai_______end________________*/
 
 //canvip updata
+
+
 const MongoClient = require('mongodb').MongoClient; // npm install mongoose connect-mongo --save
 const assert = require('assert');
 
@@ -500,7 +504,7 @@ const getdetailsFromFacebook = (userId, callback) => {
 
 
 // Set Express to listen out for HTTP requests
-let server = app.listen(process.env.PORT || 3000, function () {
+let server = app.listen(process.env.PORT || 8080, function () {
   console.log("Listening on port %s", server.address().port);
 });
 
