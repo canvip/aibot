@@ -323,27 +323,27 @@ body {
   background-repeat: no-repeat;
   background-size: contain; }
   .weather-forecast .icon.clear-day {
-    background-image: url("/images/clear.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fclear.png"); }
   .weather-forecast .icon.clear-night {
-    background-image: url("/images/clear.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fclear.png"); }
   .weather-forecast .icon.rain {
-    background-image: url("/images/rain.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Frain.png"); }
   .weather-forecast .icon.snow {
-    background-image: url("/images/snow.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsnow.png"); }
   .weather-forecast .icon.sleet {
-    background-image: url("/images/sleet.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsleet.png"); }
   .weather-forecast .icon.windy {
-    background-image: url("/images/wind.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fwind.png"); }
   .weather-forecast .icon.fog {
-    background-image: url("/images/fog.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ffog.png"); }
   .weather-forecast .icon.cloudy {
-    background-image: url("/images/cloudy.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fcloudy.png"); }
   .weather-forecast .icon.partly-cloudy-day {
-    background-image: url("/images/partly-cloudy.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fpartly-cloudy.png"); }
   .weather-forecast .icon.partly-cloudy-night {
-    background-image: url("/images/partly-cloudy.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fpartly-cloudy.png"); }
   .weather-forecast .icon.thunderstorms {
-    background-image: url("/images/thunderstorm.png"); }
+    background-image: url("https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fthunderstorm.png"); }
 
 @media (max-width: 450px) {
   .weather-forecast .date, .weather-forecast .description {
