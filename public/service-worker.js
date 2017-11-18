@@ -19,19 +19,19 @@ var filesToCache = [
   '/index.html',
   '/scripts/app.js',
   '/styles/inline.css',
-  '/images/clear.png',
-  '/images/cloudy-scattered-showers.png',
-  '/images/cloudy.png',
-  '/images/fog.png',
-  '/images/ic_add_white_24px.svg',
-  '/images/ic_refresh_white_24px.svg',
-  '/images/partly-cloudy.png',
-  '/images/rain.png',
-  '/images/scattered-showers.png',
-  '/images/sleet.png',
-  '/images/snow.png',
-  '/images/thunderstorm.png',
-  '/images/wind.png'
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fclear.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fcloudy-scattered-showers.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fcloudy.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ffog.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fic_add_white_24px.svg',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fic_refresh_white_24px.svg',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fpartly-cloudy.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Frain.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fscattered-showers.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsleet.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsnow.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fthunderstorm.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fwind.png'
 ];
 
 self.addEventListener('install', function(e) {
