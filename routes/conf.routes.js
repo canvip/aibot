@@ -28,6 +28,11 @@ router.get('/', function(req, res, next) {
     res.render('login',{ title: 'Express' });
   }),
   
+  router.get('/pwa',function(req, res){
+    res.render('pwa',{ title: 'Express' });
+  }),
+  
+  
   router.get('/login/facebook',
   passport.authenticate('facebook', {
     scope: ['public_profile','email', 'user_friends']
