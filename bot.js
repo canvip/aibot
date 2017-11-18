@@ -92,8 +92,9 @@ passport = require('./OAuth/conf.Login');//canvip add a OAuth/conf.Login'fix err
 app.set('views', path.join(__dirname, 'views'));//canvip
 //app.set('scripts', __dirname + '/views/scripts/app.js');
 app.set('view engine', 'ejs');
-app.use(express.static('views'))
+//app.use('/public', express.static('/public'))
 //app.set('views/scripts/app.js', path.join(__dirname, 'views/scripts/app.js'));
+app.use('/styles', express.static(path.join(__dirname, 'public')))
 app.use('/', routes);
 
 //const funz = require('./funz');
