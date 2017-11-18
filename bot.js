@@ -90,9 +90,10 @@ app.use(bodyParser.urlencoded({
 const routes = require('./routes/conf.routes'),//canvip add a routes
 passport = require('./OAuth/conf.Login');//canvip add a OAuth/conf.Login'fix error login url
 app.set('views', path.join(__dirname, 'views'));//canvip
-//app.set('views', __dirname + '/views');
+//app.set('scripts', __dirname + '/views/scripts/app.js');
 app.set('view engine', 'ejs');
-
+app.use(express.static('views'))
+//app.set('views/scripts/app.js', path.join(__dirname, 'views/scripts/app.js'));
 app.use('/', routes);
 
 //const funz = require('./funz');
