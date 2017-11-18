@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<link rel="manifest" href="/manifest.json"> 
 <p>Count numbers: <output id="result"></output></p>
 <button onclick="startWorker()">Start Worker</button> 
 <button onclick="stopWorker()">Stop Worker</button>
@@ -14,7 +14,7 @@ var w;
 function startWorker() {
     if(typeof(Worker) !== "undefined") {
         if(typeof(w) == "undefined") {
-            w = new Worker("demo_workers.js");
+            w = new Worker("workers.js");
         }
         w.onmessage = function(event) {
             document.getElementById("result").innerHTML = event.data;
