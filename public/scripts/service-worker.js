@@ -33,7 +33,6 @@ var filesToCache = [
   'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fthunderstorm.png',
   'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fwind.png'
 ];
-
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install');
   e.waitUntil(
@@ -43,7 +42,6 @@ self.addEventListener('install', function(e) {
     })
   );
 });
-
 self.addEventListener('activate', function(e) {
   console.log('[ServiceWorker] Activate');
   e.waitUntil(

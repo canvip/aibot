@@ -364,7 +364,7 @@
   // TODO add service worker code here
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-             .register('./service-worker.js')
+             .register('./scripts/service-worker.js')
              .then(function(reg) { console.log('Service Worker Registered'); });
   }
 })();
