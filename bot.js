@@ -15,8 +15,7 @@ cheerio = require('cheerio'),
 });
 
 
-
-/*_______________________canvip_Ai______start_________________
+/*_______________________canvip_Ai______start_________________*/
 const crypto = require('crypto'),
 //const express = require('express');
  fetch = require('node-fetch');
@@ -66,11 +65,9 @@ const fbMessage = (id, text) => {
 
 
 
-_______________________canvip_Ai_______end________________*/
+/*_______________________canvip_Ai_______end________________*/
 
 //canvip updata
-
-
 const MongoClient = require('mongodb').MongoClient; // npm install mongoose connect-mongo --save
 const assert = require('assert');
 
@@ -93,8 +90,13 @@ app.use(bodyParser.urlencoded({
 const routes = require('./routes/conf.routes'),//canvip add a routes
 passport = require('./OAuth/conf.Login');//canvip add a OAuth/conf.Login'fix error login url
 app.set('views', path.join(__dirname, 'views'));//canvip
-//app.set('views', __dirname + '/views');
+//app.set('scripts', __dirname + '/views/scripts/app.js');
 app.set('view engine', 'ejs');
+//app.use('/public', express.static('/public'))
+//app.set('views/scripts/app.js', path.join(__dirname, 'views/scripts/app.js'));
+//app.use('/scripts', express.static(path.join(__dirname, 'scripts')))
+app.use(express.static(__dirname + '/public'));
+
 app.use('/', routes);
 
 //const funz = require('./funz');
@@ -504,7 +506,7 @@ const getdetailsFromFacebook = (userId, callback) => {
 
 
 // Set Express to listen out for HTTP requests
-let server = app.listen(process.env.PORT || 8080, function () {
+let server = app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port %s", server.address().port);
 });
 
