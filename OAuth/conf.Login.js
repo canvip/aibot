@@ -9,20 +9,11 @@ var passport = require('passport'),
 // behalf, along with the user's profile.  The function must invoke `cb`
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
-/*
 passport.use(new Strategy({
     clientID: process.env.APP_ID,
     clientSecret: process.env.APP_SECRET,
     callbackURL: 'https://horse-golf.glitch.me/login/facebook/return'
 
-  },
-
-*/
-
-passport.use(new Strategy({
-    clientID: 463727490677287,
-    clientSecret: 'cc553e2ce18fb28ded84de96840f1e2d',
-    callbackURL: 'https://aibot-canvip.c9users.io/login/facebook/return'
   },
   function(accessToken, refreshToken, profile, cb) {
     // In this example, the user's Facebook profile is supplied as the user

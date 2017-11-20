@@ -19,6 +19,7 @@
   "license": "MIT",
   "homepage": "https://developers.facebook.com/docs/messenger-platform/guides/quick-start",
   "dependencies": {
+    "apiai": "^4.0.3",
     "body-parser": "*",
     "cheerio": "^0.22.0",
     "compression": "^1.7.1",
