@@ -41,6 +41,7 @@
     "request": "^2.72.0",
     "request-promise": "^4.2.2",
     "scraperjs": "^1.2.0",
-    "valid-url": "^1.0.9"
+    "valid-url": "^1.0.9",
+    "workbox-sw": "^2.1.2"
   }
 }

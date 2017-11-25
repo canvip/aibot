@@ -31,7 +31,9 @@ router.get('/', function(req, res, next) {
   router.get('/pwa',function(req, res){
     res.render('pwa',{ title: 'Express' });
   }),
-  
+  router.get('/amp',function(req, res){
+    res.render('amp',{ title: 'Express' });
+  }),
   
   router.get('/login/facebook',
   passport.authenticate('facebook', {

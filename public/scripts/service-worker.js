@@ -1,4 +1,4 @@
-// Copyright 2016 Google Inc.
+''// Copyright 2016 Google Inc.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,8 +15,19 @@
 var dataCacheName = 'Papyrus-v1';
 var cacheName = 'Papyrus-final-1';
 var filesToCache = [
+  "https://cdn.ampproject.org/v0/amp-carousel-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-list-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-mustache-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-form-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-analytics-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-fit-text-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-sidebar-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-bind-0.1.js",
+  "https://cdn.ampproject.org/v0/amp-lightbox-0.1.js",
+  'https://horse-golf.glitch.me/',
   '/',
-  '/index.html',
+  'https://cdn.ampproject.org/v0.js',
+  '/pwa',
   '/scripts/app.js',
   '/styles/inline.css',
   'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fclear.png',
@@ -31,8 +42,20 @@ var filesToCache = [
   'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsleet.png',
   'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsnow.png',
   'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fthunderstorm.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fwind.png'
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fwind.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ffavicon.ico',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-128x128.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-144x144.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-152x152.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-192x192.png',
+  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-256x256.png',
+  'https://s3.amazonaws.com/hyperweb-editor-assets/us-east-1%3Ad0d03a8e-22bf-451d-ba15-f08d8f4e99ba%2Fuse-url.svg',
+      
+     
+     
 ];
+
+
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install');
   e.waitUntil(
@@ -42,6 +65,10 @@ self.addEventListener('install', function(e) {
     })
   );
 });
+
+
+
+
 self.addEventListener('activate', function(e) {
   console.log('[ServiceWorker] Activate');
   e.waitUntil(
@@ -67,35 +94,52 @@ self.addEventListener('activate', function(e) {
   return self.clients.claim();
 });
 
-self.addEventListener('fetch', function(e) {
-  console.log('[Service Worker] Fetch', e.request.url);
-  var dataUrl = 'https://query.yahooapis.com/v1/public/yql';
-  if (e.request.url.indexOf(dataUrl) > -1) {
-    /*
-     * When the request URL contains dataUrl, the app is asking for fresh
-     * weather data. In this case, the service worker always goes to the
-     * network and then caches the response. This is called the "Cache then
-     * network" strategy:
-     * https://jakearchibald.com/2014/offline-cookbook/#cache-then-network
-     */
-    e.respondWith(
-      caches.open(dataCacheName).then(function(cache) {
-        return fetch(e.request).then(function(response){
-          cache.put(e.request.url, response.clone());
-          return response;
-        });
-      })
-    );
-  } else {
-    /*
-     * The app is asking for app shell files. In this scenario the app uses the
-     * "Cache, falling back to the network" offline strategy:
-     * https://jakearchibald.com/2014/offline-cookbook/#cache-falling-back-to-network
-     */
-    e.respondWith(
-      caches.match(e.request).then(function(response) {
-        return response || fetch(e.request);
-      })
-    );
-  }
+
+
+self.addEventListener('fetch', function(event) {
+	if (event.request.mode == 'navigate') {
+		console.log('Handling fetch event for', event.request.url);
+		console.log(event.request);
+		event.respondWith(
+			fetch(event.request).catch(function(exception) {
+				// The `catch` is only triggered if `fetch()` throws an exception,
+				// which most likely happens due to the server being unreachable.
+				console.error(
+					'Fetch failed; returning offline page instead.',
+					exception
+				);
+				return caches.open(filesToCache).then(function(cache) {
+					return cache.match('/');
+				});
+			})
+		);
+	} else {
+		// It’s not a request for an HTML document, but rather for a CSS or SVG
+		// file or whatever…
+		event.respondWith(
+			caches.match(event.request).then(function(response) {
+				return response || fetch(event.request);
+			})
+		);
+	}
+
+});
+
+/*
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => {
+    return cache.addAll(filesToCache);
+  }));
+});
+
+function addToCache(cacheName, filesToCache) {
+  caches.open(cacheName).then(cache => {
+    return cache.addAll(filesToCache);
+  });
+}
+*/
+self.addEventListener('fetch', event => {
+  event.respondWith(caches.match(event.request).then(response => {
+    return response || fetch(event.request);
+  }));
 });
