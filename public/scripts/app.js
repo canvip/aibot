@@ -20,22 +20,10 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
              .register('./scripts/service-worker.js')
+              
              .then(function() { console.log('Service Worker Registered'); });
+
   }
 })();
 
-importScripts('/node_modules/workbox-sw/build/workbox-sw.v2.1.2.prod.js');
 
-const workboxSW = new WorkboxSW();
-workboxSW.precache([
-  {
-    url: '/index.html',
-    revision: 'bb121c',
-  }, {
-    url: '/styles/main.css',
-    revision: 'acd123',
-  }, {
-    url: '/scripts/main.js',
-    revision: 'a32caa',
-  }
-]);

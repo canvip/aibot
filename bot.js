@@ -99,6 +99,9 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/', routes);
 
+app.get('/node_modules/workbox-sw/build/importScripts/:version', (request, response) => {
+  response.sendFile(`${__dirname}/node_modules/workbox-sw/build/importScripts/${request.params.version}`);
+});
 //const funz = require('./funz');
 
 // Use application-level middleware for common functionality, including
@@ -504,10 +507,14 @@ const getdetailsFromFacebook = (userId, callback) => {
   );
 };
 
-
+/*
 // Set Express to listen out for HTTP requests
 let server = app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port %s", server.address().port);
 });
 
+*/
 
+const listener = app.listen(5000, function () {
+  console.log(`Your app is listening on port ${listener.address().port}`);
+});

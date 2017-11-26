@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/vernon99/messenger-quick-start.git"
   },
+  "engines": {
+    "node": "8.1.x"
+  },
   "keywords": [
     "messenger",
     "bot",
@@ -28,7 +31,7 @@
     "cookie-parser": "^1.4.3",
     "dialogflow": "^0.1.0",
     "ejs": "^2.5.7",
-    "express": "*",
+    "express": "^4.16.1",
     "express-session": "^1.15.6",
     "jsdom": "^11.1.0",
     "memory-cache": "^0.2.0",
@@ -42,6 +45,7 @@
     "request-promise": "^4.2.2",
     "scraperjs": "^1.2.0",
     "valid-url": "^1.0.9",
-    "workbox-sw": "^2.1.2"
+    "workbox-sw": "^2.1.2",
+    "workbox-webpack-plugin": "^2.1.2"
   }
 }

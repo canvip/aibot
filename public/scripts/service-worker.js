@@ -1,4 +1,4 @@
-''// Copyright 2016 Google Inc.
+// Copyright 2016 Google Inc.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,25 +30,6 @@ var filesToCache = [
   '/pwa',
   '/scripts/app.js',
   '/styles/inline.css',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fclear.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fcloudy-scattered-showers.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fcloudy.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ffog.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fic_add_white_24px.svg',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fic_refresh_white_24px.svg',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fpartly-cloudy.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Frain.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fscattered-showers.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsleet.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fsnow.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fthunderstorm.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Fwind.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ffavicon.ico',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-128x128.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-144x144.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-152x152.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-192x192.png',
-  'https://cdn.glitch.com/0264b8ff-6d27-4539-a1fe-b8fc7dc5214f%2Ficon-256x256.png',
   'https://s3.amazonaws.com/hyperweb-editor-assets/us-east-1%3Ad0d03a8e-22bf-451d-ba15-f08d8f4e99ba%2Fuse-url.svg',
       
      
@@ -96,12 +77,12 @@ self.addEventListener('activate', function(e) {
 
 
 
-self.addEventListener('fetch', function(event) {
-	if (event.request.mode == 'navigate') {
-		console.log('Handling fetch event for', event.request.url);
-		console.log(event.request);
-		event.respondWith(
-			fetch(event.request).catch(function(exception) {
+self.addEventListener('fetch', function(e) {
+	if (e.request.mode == 'navigate') {
+		console.log('Handling fetch e for', e.request.url);
+		console.log(e.request);
+		e.respondWith(
+			fetch(e.request).catch(function(exception) {
 				// The `catch` is only triggered if `fetch()` throws an exception,
 				// which most likely happens due to the server being unreachable.
 				console.error(
@@ -116,30 +97,32 @@ self.addEventListener('fetch', function(event) {
 	} else {
 		// It’s not a request for an HTML document, but rather for a CSS or SVG
 		// file or whatever…
-		event.respondWith(
-			caches.match(event.request).then(function(response) {
-				return response || fetch(event.request);
+		e.respondWith(
+			caches.match(e.request).then(function(response) {
+				return response || fetch(e.request);
 			})
 		);
 	}
 
 });
 
-/*
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => {
-    return cache.addAll(filesToCache);
-  }));
+
+
+// TODO: Replace Xs.
+
+importScripts('/node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1.2.js');
+// Note: Ignore the error that Glitch raises about WorkboxSW being undefined.
+const workbox = new WorkboxSW({
+  skipWaiting: true,
+  clientsClaim: true
 });
 
-function addToCache(cacheName, filesToCache) {
-  caches.open(cacheName).then(cache => {
-    return cache.addAll(filesToCache);
-  });
-}
-*/
-self.addEventListener('fetch', event => {
-  event.respondWith(caches.match(event.request).then(response => {
-    return response || fetch(event.request);
-  }));
-});
+workbox.precache([]);
+
+workbox.precache([
+  {
+    "url": "/",
+    "revision": "7dc612bd22a1710ad8c318480f474ea5"
+  }
+  
+]);

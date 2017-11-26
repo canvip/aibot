@@ -16,7 +16,7 @@ router.use(compression())//npm install compression --canvip
 router.use(passport.initialize());
 router.use(passport.session());
 
-
+//router.use(express.static(__dirname + '/node_modules'));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -54,7 +54,6 @@ router.get('/', function(req, res, next) {
 
 
 
-   
     
 
 const request = require('request-promise');
